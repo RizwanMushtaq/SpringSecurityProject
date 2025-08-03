@@ -23,6 +23,7 @@ public class SecurityConfig {
           .anyRequest().authenticated();
     });
     httpSecurity.formLogin(Customizer.withDefaults());
+    httpSecurity.httpBasic(Customizer.withDefaults());
     return httpSecurity.build();
   }
 
