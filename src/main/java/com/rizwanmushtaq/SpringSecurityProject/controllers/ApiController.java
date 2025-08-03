@@ -4,18 +4,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
-
 @RestController
 @RequestMapping("/api")
 public class ApiController {
   @GetMapping("/route1")
-  public String route1(Principal principal) {
-    return "This is route 1 " + principal.getName();
+  public String route1() {
+    return "This is route 1 ";
   }
 
   @GetMapping("/route2")
-  public String route2(Principal principal) {
-    return "This is route 2 " + principal.getName();
+  public String route2() {
+    return "This is route 2 ";
+  }
+
+  @GetMapping("/route3")
+  public String route3() {
+    return "This is route 3";
   }
 }
