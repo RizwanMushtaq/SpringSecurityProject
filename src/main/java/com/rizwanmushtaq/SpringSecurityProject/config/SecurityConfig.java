@@ -18,6 +18,8 @@ public class SecurityConfig {
       request
           .requestMatchers("/api/route2").permitAll()
           .requestMatchers("/api/route3").permitAll()
+          .requestMatchers("/users/**").permitAll()
+          .requestMatchers("/api/register").permitAll()
           .anyRequest().authenticated();
     });
     httpSecurity.formLogin(Customizer.withDefaults());
