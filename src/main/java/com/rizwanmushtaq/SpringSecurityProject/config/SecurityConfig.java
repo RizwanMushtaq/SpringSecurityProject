@@ -19,12 +19,11 @@ public class SecurityConfig {
         .authorizeHttpRequests((request) -> {
           request
               .requestMatchers("/api/route2").permitAll()
-              .requestMatchers("/api/route3").authenticated()
-              .requestMatchers("/api/route1").authenticated()
               .requestMatchers("/users/**").permitAll()
               .requestMatchers("/api/register").permitAll()
-              .anyRequest().authenticated();
+              .anyRequest().permitAll();
         })
+        .formLogin(Customizer.withDefaults())
         .httpBasic(Customizer.withDefaults())
         .csrf(csrf -> csrf.disable())
         .sessionManagement(
