@@ -1,13 +1,16 @@
 package com.rizwanmushtaq.SpringSecurityProject.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "users")
 public class User {
@@ -15,5 +18,6 @@ public class User {
   private String id;
   private String username;
   private String password;
-  private String role;
+  @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  private List<Role> roles = new ArrayList<>();
 }

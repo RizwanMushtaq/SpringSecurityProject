@@ -1,8 +1,10 @@
 package com.rizwanmushtaq.SpringSecurityProject.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -10,8 +12,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "roles")
 public class Role {
+  @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+  List<User> users = new ArrayList<>();
   @Id
-  private int id;
+  private String id;
   private String name;
 }
