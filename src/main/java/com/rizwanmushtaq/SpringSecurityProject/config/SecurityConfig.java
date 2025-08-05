@@ -18,9 +18,8 @@ public class SecurityConfig {
     httpSecurity
         .authorizeHttpRequests((request) -> {
           request
-              .requestMatchers("/api/route2").permitAll()
-              .requestMatchers("/users/**").permitAll()
-              .requestMatchers("/api/register").permitAll()
+              .requestMatchers("/api/route3", "/api/route4").hasRole("GUEST")
+              .requestMatchers("/api/route1", "/api/route2").hasRole("ADMIN")
               .anyRequest().permitAll();
         })
         .formLogin(Customizer.withDefaults())
