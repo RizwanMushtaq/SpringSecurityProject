@@ -1,5 +1,6 @@
 package com.rizwanmushtaq.SpringSecurityProject.controllers;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,7 @@ public class ApiController {
   }
 
   @GetMapping("/route5")
+  @PreAuthorize("hasRole('GUEST')")
   public String route5() {
     return "Drink Water - This is route 5";
   }
